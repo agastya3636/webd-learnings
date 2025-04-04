@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="display">
+        <div class="time">
+            <p>
+                Time - 
+            </p>
+            <div class="hours">
+            </div>
+            <div class="minutes">
+            </div>
+            <div class="seconds">
+            </div>
+           
+            
+        </div>
+        <div class="daysdetails">
+            <div class="day" ></div>
+            
+            <div class="date"></div>
+            <div class="month"></div>
+            <div class="year"></div>
+        </div>
+        
+    </div>
+    <style>
+        .display{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 5rem;
+            font-family: sans-serif;
+            padding: 10px;
+        }
+        .time{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 5rem;
+            font-family: sans-serif;
+            padding: 10px;
+            width: 100%;
+            background-color: aquamarine;
+        }
+        .daysdetails{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 5rem;
+            font-family: sans-serif;
+            padding: 10px;
+            width: 100%;
+        }
+        .hours{
+            color: #333;
+            
+            border-color: #0b0a0a;
+            border-radius: 10px;
+
+        }
+        .minutes{
+            color: #1e1d1d;
+            border-radius: 10px;
+            border-color: #0b0a0a;
+        }
+        .seconds{
+            color: #0b0a0a;
+            border-radius: 10px;
+            border-color: #0b0a0a;
+        }
+
+    </style>
+</body>
+<script>
+    function timeupdate(){
+        let d=new Date();
+        let h=d.getHours();
+        let m=d.getMinutes();
+        let s=d.getSeconds();
+        let day=d.getDay();
+        let dat=d.getDate();
+        let mo=d.getMonth();
+        let ya=d.getFullYear();
+
+        let a=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+        document.querySelector('.hours').innerHTML=h+":";
+        document.querySelector('.minutes').innerHTML=m+":";
+        document.querySelector('.seconds').innerHTML=s;
+      
+
+        document.querySelector('.day').innerHTML=a[day-1]+" -  ";
+        document.querySelector('.date').innerHTML=dat+"/";
+        document.querySelector('.month').innerHTML=(mo+1)+"/";
+        document.querySelector('.year').innerHTML=ya;
+
+
+
+    };
+    setInterval(timeupdate,1000);
+</script>
+</html>

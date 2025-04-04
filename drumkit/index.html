@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project to read keyboard</title>
+</head>
+<body>
+    <div class="display">
+        <p>
+            Press any key on the keyboard
+        </p>
+        <div class="keycode"></div>
+        <div class="key"></div>
+    </div>
+    <style>
+        .display{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 5rem;
+            font-family: sans-serif;
+        }
+        .keycode{
+            color: #999;
+        }
+        .key{
+            color: #333;
+        }
+    </style>
+</body>
+<script>
+    window.addEventListener('keydown',function(e){
+        console.log(e);
+        let d = document.querySelector('.key');
+        if(e.keyCode==32)
+        d.innerHTML="Space";
+        else
+        d.innerHTML = e.key;
+        let c = document.querySelector('.keycode');
+        c.innerHTML = e.keyCode;
+    });
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="text" >
+        <h1>Click the button to change the background color.</h1>
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+    </div>
+    <div class="box" style="width: 100px; height:100px">1</div>
+    <div class="box"style="width: 100px; height:100px">2</div>
+    <div class="box"style="width: 100px; height:100px">3</div>
+    <div class="box"style="width: 100px; height:100px">4</div>
+    <div class="box"style="width: 100px; height:100px">5</div>
+    <div class="box"style="width: 100px; height:100px">6</div>
+    <div class="box"style="width: 100px; height:100px">7</div>
+    <div class="box"style="width: 100px; height:100px">8</div>
+    <div class="box"style="width: 100px; height:100px">9</div>
+</body>
+<script>
+    
+    function generate_color(){
+        const v="0123456789ABCDEF";
+        let color="#";
+        for(let i=0;i<6;i++)
+        {
+            color+=v[Math.floor(Math.random()*16)];
+        }
+        return color;
+    };
+    let command
+    function startgeneratingcolour(){
+        command=setInterval(function(){
+            let k=document.querySelectorAll('.box');
+            document.body.style.background=generate_color();
+            for(const element of k)
+            {
+                element.style.background=generate_color();
+            }
+        },1000)
+    };
+    function stopgeneratingcolour(){
+        clearInterval(command);
+    
+    };
+
+    document.querySelector(".start").addEventListener('click',startgeneratingcolour,false)
+    document.querySelector(".stop").addEventListener('click',stopgeneratingcolour,false)
+    const url='https://randomuser.me/api/';
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',url,true);
+    console.log("here");
+    xhr.onreadystatechange=function () {
+        if (xhr.readyState==4){
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+        }
+    };
+    xhr.send();
+
+
+</script>
+</html>
